@@ -22,15 +22,17 @@
         <a class="navbar-brand" href="<%= root_url %>"/>Home</a>
 
         <% if session[:user_id] %>
-          <a class= "navbar-brand" href="<%= user_path(User.find_by_id(session[:user_id])) %>"> Your profile</a>
-        <% else %>
-          <a class="navbar-brand" href="<%= new_user_path %>">Sign Up</a>
-        <% end %>
 
-        <% if session[:user_id] %>
+          <a class= "navbar-brand" href="<%= user_path(User.find_by_id(session[:user_id])) %>"> Your profile</a>
           <%= link_to 'Log Out', '/', method: :delete, class:'navbar-brand'%>
+          <%= link_to 'Drink Index', drinks_path %>
+          <%= link_to 'Ingredient Index', ingredients_path %>
+
+
         <% else %>
-         <%= link_to 'Log In', '/', {class: 'navbar-brand'} %>
+
+          <a class="navbar-brand" href="<%= new_user_path %>">Sign Up</a>
+          <%= link_to 'Log In', '/', {class: 'navbar-brand'} %>
         <% end %>
 
         </div>
