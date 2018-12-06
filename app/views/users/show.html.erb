@@ -1,1 +1,4 @@
 <%= @user.name %>
+<% @user.drinks.each do |d| %>
+  <p><%= link_to d.name drink_path(d) %></p>
+<% end %>
