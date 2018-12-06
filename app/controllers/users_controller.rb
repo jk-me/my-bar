@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
-    # @user.drinks << Drink.new(name:'pie')
   end
 
   private
