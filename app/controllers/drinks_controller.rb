@@ -7,6 +7,7 @@ class DrinksController < ApplicationController
   end
 
   def show
+    @drink = Drink.find_by_id(params[:id])
   end
 
   def edit

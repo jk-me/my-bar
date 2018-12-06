@@ -1,0 +1,11 @@
+<h1><%= @drink.name %></h1>
+
+<% @drink.ingredients.each do |i| %>
+  <p><%= link_to i.name, ingredient_path(i) %></p>
+<% end %>
+
+<% @drink.reviews.each do |r| %>
+  <%= 'by' + r.user.name %>
+  <%= r.rating + '/5' %>
+  <%= r.content %>
+<% end %>
