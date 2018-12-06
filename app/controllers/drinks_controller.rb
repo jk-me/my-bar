@@ -1,6 +1,7 @@
 class DrinksController < ApplicationController
 
   def new
+    @drink = Drink.new
   end
 
   def create
