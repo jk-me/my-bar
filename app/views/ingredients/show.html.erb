@@ -1,0 +1,6 @@
+<h1><%= @ingredient.name %></h1>
+<p><%= @ingredient.description %></p>
+
+<% @ingredient.drinks.each do |d|%>
+  <p><%= link_to d.name, drink_path(d) %></p>
+<% end %>

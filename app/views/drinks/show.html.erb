@@ -6,7 +6,7 @@
 <% end %>
 
 <% @drink.reviews.each do |r| %>
-  <%= 'by' + r.user.name %>
-  <%= r.rating + '/5' %>
+  <%= 'by' + "#{r.user.name}" %>
+  <%="#{r.rating}" + '/5' %>
   <%= r.content %>
 <% end %>
