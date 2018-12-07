@@ -3,14 +3,18 @@ class DrinksController < ApplicationController
   def index
     @drinks = Drink.all
   end
-  
+
   def new
     @drink = Drink.new
   end
 
   def create
     @drink = Drink.create(drink_params)
-    redirect_to drink_path(@drink)
+    if @drink.valid?
+      redirect_to drink_path(@drink)
+    else
+      render :new
+    end
   end
 
   def show
