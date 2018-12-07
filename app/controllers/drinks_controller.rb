@@ -1,10 +1,11 @@
 class DrinksController < ApplicationController
-
+  before_action :redirect_if_not_logged_in
   def index
     @drinks = Drink.all
   end
 
   def new
+    
     @drink = Drink.new
   end
 

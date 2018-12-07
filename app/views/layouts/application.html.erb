@@ -42,6 +42,13 @@
     </div>
 
     <div class='container' role='main'>
+      
+      <% if flash[:error] %>
+        <div class="alert alert-warning">
+          <%= flash[:error] %>
+        </div>
+      <% end %>
+
       <%= yield %>
     </div>
 
