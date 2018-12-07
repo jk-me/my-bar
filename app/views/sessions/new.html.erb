@@ -1,7 +1,7 @@
-<h1>Sign Up</h1>
+<h1>Log In</h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, url: sessions_path do |f| %>
   <p>Username: <%= f.text_field :name %></p>
   <p>Password: <%= f.password_field :password %></p>
-  <%= f.submit %>
+  <%= f.submit "Log In"%>
 <% end %>

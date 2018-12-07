@@ -7,8 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-user1 = User.create({name:'bob'})
-user2 = User.create({name: 'sue'})
+user1 = User.create({name:'bob', password:'pw'})
+user2 = User.create({name: 'sue', password: 'pw'})
 
 drink1 = Drink.create({name: 'bloody mary', description: 'tomatoey'})
 drink2 = Drink.create({name: 'vodka martini'})

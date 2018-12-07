@@ -24,7 +24,7 @@
         <% if session[:user_id] %>
 
           <a class= "navbar-brand" href="<%= user_path(User.find_by_id(session[:user_id])) %>"> Your profile</a>
-          <%= link_to 'Log Out', '/', method: :delete, class:'navbar-brand'%>
+          <%= link_to 'Log Out', logout_path, class:'navbar-brand'%>
           <%= link_to 'Drink Index', drinks_path %>
           <%= link_to 'Ingredient Index', ingredients_path %>
 
@@ -32,7 +32,7 @@
         <% else %>
 
           <a class="navbar-brand" href="<%= new_user_path %>">Sign Up</a>
-          <%= link_to 'Log In', '/', {class: 'navbar-brand'} %>
+          <%= link_to 'Log In', new_session_path, {class: 'navbar-brand'} %>
         <% end %>
 
         </div>
