@@ -1,12 +1,14 @@
 <h1><%= @drink.name %></h1>
-<p><%= @drink.description %></p>
+<p><%= @drink.description %></p> <br>
 
+<p>Ingredients: </p>
 <% @drink.ingredients.each do |i| %>
   <p><%= link_to i.name, ingredient_path(i) %></p>
-<% end %>
+<% end %> <br>
 
+<p>Reviews: </p>
 <% @drink.reviews.each do |r| %>
-  <%= 'by' + "#{r.user.name}" %>
-  <%="#{r.rating}" + '/5' %>
+  <%= 'by ' + "#{r.user.name}" %>
+  <%="#{r.rating}" + '/5' %> <br>
   <%= r.content %>
 <% end %>
