@@ -1,6 +1,5 @@
-<%= @user.name %>
+<h1>Hello, <%= @user.name %></h1>
 <p><%= link_to "Add a New Drink", new_drink_path %></p>
-<p><%= link_to "View all drinks", drinks_path %></p>
 
 <p>Your favorites:</p>
 <% @user.drinks.each do |d| %>

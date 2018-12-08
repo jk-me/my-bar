@@ -10,7 +10,7 @@ class DrinksController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     @drink = Drink.create(drink_params)
     if @drink.valid?
       redirect_to drink_path(@drink)
