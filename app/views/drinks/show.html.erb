@@ -6,9 +6,12 @@
   <p><%= link_to i.name, ingredient_path(i) %></p>
 <% end %> <br>
 
-<p>Reviews: </p>
+<div>Reviews: </div>
+<p><%= link_to "Add a Review", new_review_path %></p>
+<br>
+
 <% @drink.reviews.each do |r| %>
-  <%= 'by ' + "#{r.user.name}" %>
-  <%="#{r.rating}" + '/5' %> <br>
-  <%= r.content %>
+  <p><%= 'by ' + "#{r.user.name} , " + "#{r.rating}" + '/5' %></p>
+  <p><%= r.content %></p>
+
 <% end %>
