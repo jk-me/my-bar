@@ -5,11 +5,12 @@ class DrinksController < ApplicationController
   end
 
   def new
-    
+
     @drink = Drink.new
   end
 
   def create
+    byebug
     @drink = Drink.create(drink_params)
     if @drink.valid?
       redirect_to drink_path(@drink)
@@ -34,6 +35,6 @@ class DrinksController < ApplicationController
   private
 
   def drink_params
-    params.require(:drink).permit(:name, :description)
+    params.require(:drink).permit(:name, :description, user_ids:[], ingredient_ids:[] )
   end
 end

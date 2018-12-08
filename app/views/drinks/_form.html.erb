@@ -1,9 +1,17 @@
 <%= form_for @drink do |f| %>
-  <p>Name:</p>
-  <%= f.text_field :name %>
-  <p>Description</p>
-  <%= f.text_area  :description%>
-  <%= 'select ingredients option' %>
-  <%= 'add to your favs button' %>
+  <div class="">
+    <p>Name:</p>
+    <%= f.text_field :name %>
+  </div>
+  <div class="">
+    <p>Description</p>
+    <%= f.text_area  :description%>
+  </div>
+
+  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, item_wrapper_class: 'checkbox_container' %>
+
+
+  <p><%= check_box_tag :'drink[user_ids][]', current_user.id %> Add to your favorites</p>
+
   <%= f.submit %>
 <% end %>

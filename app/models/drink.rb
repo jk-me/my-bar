@@ -6,4 +6,6 @@ class Drink < ApplicationRecord
   has_many :reviews
 
   validates :name, presence: true
+
+  accepts_nested_attributes_for :users
 end
