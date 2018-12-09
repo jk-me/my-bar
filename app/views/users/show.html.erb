@@ -1,14 +1,7 @@
 <h1>Hello, <%= @user.name %></h1>
-<p><%= link_to "Add a New Drink", new_drink_path %></p>
+<p><%= link_to "Add a New Drink", new_drink_path %> | <%= link_to "See reviews you've written.", user_reviews_path(current_user) %></p>
 
-<p>Your favorites:</p>
+<h3>Your favorites:</h3>
 <% @user.drinks.each do |d| %>
   <p><%= link_to d.name, drink_path(d) %></p>
-<% end %>
-
-<p>Your reviews (temp):</p>
-<% @user.reviews.each do |r| %>
-  <p><%= "#{r.drink.name}"+ ' - '+"#{r.rating}" + '/5' %></p>
-  <p><%= r.content %></p>
-  <p><%= link_to "Edit Review", edit_review_path(r) %></p>
 <% end %>

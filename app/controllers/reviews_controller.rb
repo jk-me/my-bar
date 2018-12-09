@@ -1,6 +1,14 @@
 class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
+  def index
+    if params[:user_id]
+      @reviews = current_user.reviews
+    else
+      redirect_to root_url
+    end
+  end
+
   def new
     if params[:drink_id]
       @drink = Drink.find_by_id(params[:drink_id])
