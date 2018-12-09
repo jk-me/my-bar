@@ -7,7 +7,7 @@
 <% end %> <br>
 
 <div>Reviews: </div>
-<p><%= link_to "Add a Review", new_review_path %></p>
+<p><%= link_to "Add a Review", new_drink_review_path(@drink) %></p>
 <br>
 
 <% @drink.reviews.each do |r| %>

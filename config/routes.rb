@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :users
   resources :ingredients, only: [:index, :show]
   resources :reviews
-  resources :drinks
+  resources :drinks do
+    resources :reviews, only: [:new]
+  end
   resources :sessions, only: [:new,:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
