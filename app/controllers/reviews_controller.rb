@@ -11,13 +11,18 @@ class ReviewsController < ApplicationController
   def create
     # byebug
     @review = Review.create(review_params)
-    redirect_to drink_path(Drink.find_by_id(review_params[:drink_id]))
+    redirect_to drink_path(@review.drink.id)
   end
 
   def edit
+    @review = Review.find(params[:id])
   end
 
   def update
+    @review = Review.find(params[:id])
+    @review.update(review_params)
+    redirect_to drink_path(@review.drink.id)
+
   end
 
   def destroy
