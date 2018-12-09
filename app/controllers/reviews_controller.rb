@@ -6,12 +6,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
+    byebug
     @review = Review.create(review_params)
-    if @review.valid?
+    # if @review.valid?
       redirect_to user_path(current_user)
-    else
-      render :new
-    end
+    # else
+    #   render :new
+    # end
   end
 
   def edit
@@ -26,6 +27,6 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:rating, :content)
+    params.require(:review).permit(:rating, :content, :user_id)
   end
 end
