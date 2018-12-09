@@ -21,13 +21,14 @@
           </button>
 
         <% if session[:user_id] %>
-          <a class= "navbar-brand" href="<%= user_path(User.find_by_id(session[:user_id])) %>"> Your profile</a>
-          <%= link_to 'Log Out', logout_path, class:'navbar-brand'%>
+          <%= link_to 'Your Profile', user_path(current_user), class:'navbar-brand' %>
           <%= link_to 'Drink Index', drinks_path, class:'navbar-brand' %>
           <%= link_to 'Ingredient Index', ingredients_path, class:'navbar-brand' %>
+          <%= link_to 'Log Out', logout_path, class:'navbar-brand'%>
+
 
         <% else %>
-          <a class="navbar-brand" href="<%= new_user_path %>">Sign Up</a>
+          <%= link_to 'Sign Up', new_user_path, class:'navbar-brand' %>
           <%= link_to 'Log In', new_session_path, {class: 'navbar-brand'} %>
         <% end %>
         </div>  <!--nav header -->
