@@ -1,8 +1,10 @@
 <h2>All Drinks</h2>
 <p><%= link_to "Add a New Drink", new_drink_path %></p>
+
+
 <%= form_tag '/drinks', method:'get' do %>
-  <%= hidden_field_tag 'complex', '1' %>
-  <%= submit_tag 'Show drinks w/ 3+ ingredients' %>
+  <%= select_tag 'filter',options_for_select(['4+ ingredients', '3 or less ingredients']) ,include_blank: true %>
+  <%= submit_tag 'Filter List' %>
 <% end %>
 
 <% @drinks.each do |d| %>
