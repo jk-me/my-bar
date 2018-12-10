@@ -3,5 +3,5 @@
 <% @reviews.each do |r|%>
   <p><%= "#{r.drink.name}"+ ' - '+"#{r.rating}" + '/5' %></p>
   <p><%= r.content %></p>
-  <p><%= link_to "Edit Review", edit_review_path(r) %></p>
+  <p><%= link_to "Edit Review", edit_review_path(r) %> | <%= link_to "Delete", "/reviews/#{r.id}", method: :delete %> </p>
 <% end %>
