@@ -7,5 +7,8 @@ class Drink < ApplicationRecord
 
   validates :name, presence: true
 
-  accepts_nested_attributes_for :ingredients, reject_if: proc { |attributes| attributes['name'].blank? }
+  accepts_nested_attributes_for :ingredients, reject_if: proc { |att| att['name'].blank? }
+
+  scope :complex, -> { self.joins(:ingredients).group('ingredient_id').having('count(ingredient_id) > 3') }
+
 end

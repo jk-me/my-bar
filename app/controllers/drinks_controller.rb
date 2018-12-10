@@ -1,7 +1,11 @@
 class DrinksController < ApplicationController
   before_action :redirect_if_not_logged_in
   def index
-    @drinks = Drink.all
+    if !params[:complex].blank?
+      @drinks = Drink.complex
+    else
+      @drinks = Drink.all
+    end
   end
 
   def new
@@ -19,6 +23,7 @@ class DrinksController < ApplicationController
   end
 
   def show
+    # byebug
     @drink = Drink.find_by_id(params[:id])
   end
 
