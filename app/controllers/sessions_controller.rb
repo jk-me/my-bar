@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
   end
 
   def fbcreate
-    
+
   end
 
   private

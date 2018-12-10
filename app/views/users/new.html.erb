@@ -1,14 +1,6 @@
 <h1>Sign Up</h1>
 
-<% if @user.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-      <% @user.errors.full_messages.each do |m| %>
-        <li><%= m %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<%= render partial:'layouts/errors_expl', locals: {var: @user} %>
 
 <%= form_for @user do |f| %>
   <p>Username: <%= f.text_field :name %></p>

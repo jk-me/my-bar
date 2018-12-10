@@ -9,6 +9,10 @@
 <% @drink.ingredients.each do |i| %>
   <p><%= link_to i.name, ingredient_path(i) %></p>
 <% end %>
+<p>new list</p>
+<%= @drink.drinks_ingredients.each do |di| %>
+  <p><%= "#{di.parts} parts" %> <%= link_to di.ingredient.name, ingredient_path(di.ingredient) %></p>
+<% end %>
 
 <br>
 

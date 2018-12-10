@@ -1,5 +1,6 @@
 <h1>Log In</h1>
 
+
 <%= link_to "Login with Facebook", '/auth/facebook'%>
 <%= form_for @user, url: sessions_path do |f| %>
   <p>Username: <%= f.text_field :name %></p>
