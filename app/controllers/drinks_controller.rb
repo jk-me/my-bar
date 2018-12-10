@@ -23,9 +23,18 @@ class DrinksController < ApplicationController
   end
 
   def edit
+    @drink = Drink.find_by_id(params[:id])
+
   end
 
   def update
+    @drink = Drink.find_by_id(params[:id])
+    @drink.update(drink_params)
+    if @drink.valid?
+      redirect_to drink_path(@drink)
+    else
+      render :edit
+    end
   end
 
   def destroy

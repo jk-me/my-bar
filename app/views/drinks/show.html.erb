@@ -1,10 +1,16 @@
+<p><%= link_to "Edit", edit_drink_path(@drink) %> | <%= link_to "Delete", '/' %> </p>
 <h1><%= @drink.name %></h1>
+
 <p><%= @drink.description %></p> <br>
+
+
 
 <p>Ingredients: </p>
 <% @drink.ingredients.each do |i| %>
   <p><%= link_to i.name, ingredient_path(i) %></p>
-<% end %> <br>
+<% end %>
+
+<br>
 
 <div>Reviews: </div>
 <p><%= link_to "Add a Review", new_drink_review_path(@drink) %></p>

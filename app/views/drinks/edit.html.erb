@@ -1,0 +1,14 @@
+<h1>Edit <%= @drink.name %></h1>
+
+<% if @drink.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% @drink.errors.full_messages.each do |m| %>
+        <li><%= m %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<%= render 'form' %>
