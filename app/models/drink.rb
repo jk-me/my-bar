@@ -7,5 +7,5 @@ class Drink < ApplicationRecord
 
   validates :name, presence: true
 
-  accepts_nested_attributes_for :ingredients
+  accepts_nested_attributes_for :ingredients, reject_if: proc { |attributes| attributes['name'].blank? }
 end
