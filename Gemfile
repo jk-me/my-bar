@@ -29,6 +29,11 @@ gem 'bcrypt', '~> 3.1.7'
 
 #boostrap
 gem 'bootstrap-sass', '~> 3.3.7'
+#omniauth
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'dotenv-rails'
+
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 

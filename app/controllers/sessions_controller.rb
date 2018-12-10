@@ -12,6 +12,10 @@ class SessionsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def fbcreate
+    
+  end
+
   private
 
   def sess_params
