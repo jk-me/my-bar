@@ -10,6 +10,10 @@
 
   <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, item_wrapper_class: 'checkbox_container' %>
 
+  <%= f.fields_for :ingredients, @drink.ingredients.build do |ing_field| %>
+    <%= ing_field.text_field :name, placeholder: "Ingredient Name" %>
+  <% end %>
+
 
   <p><%= check_box_tag :'drink[user_ids][]', current_user.id %> Add to your favorites</p>
 
