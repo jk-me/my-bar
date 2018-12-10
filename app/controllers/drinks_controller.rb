@@ -45,6 +45,9 @@ class DrinksController < ApplicationController
   end
 
   def destroy
+    @drink = Drink.find_by_id(params[:id])
+    @drink.destroy
+    redirect_to drinks_path
   end
 
   private

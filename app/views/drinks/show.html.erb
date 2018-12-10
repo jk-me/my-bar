@@ -1,4 +1,4 @@
-<p><%= link_to "Edit", edit_drink_path(@drink) %> | <%= link_to "Delete", '/' %> </p>
+<p><%= link_to "Edit", edit_drink_path(@drink) %> | <%= link_to "Delete", "/drinks/#{@drink.id}", method: :delete %> </p>
 <h1><%= @drink.name %></h1>
 
 <p><%= @drink.description %></p> <br>
