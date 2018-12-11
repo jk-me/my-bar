@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     if params[:user_id]
       @reviews = current_user.reviews
     else
-      redirect_to root_url
+      redirect_to user_path(current_user)
     end
   end
 

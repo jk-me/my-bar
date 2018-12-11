@@ -1,8 +1,6 @@
 <h2>Edit your review for <%= @review.drink.name %>: </h2>
 
 <%= form_for @review do |f| %>
-
   <%= render partial:'form', locals: {f: f} %>
-
   <%= f.submit %>
 <% end %>
