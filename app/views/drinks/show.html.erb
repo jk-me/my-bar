@@ -6,11 +6,7 @@
 
 
 <p>Ingredients: </p>
-<% @drink.ingredients.each do |i| %>
-  <p><%= link_to i.name, ingredient_path(i) %></p>
-<% end %>
-<p>new list</p>
-<%= @drink.drinks_ingredients.each do |di| %>
+<% @drink.drinks_ingredients.each do |di| %>
   <p><%= "#{di.parts} parts" %> <%= link_to di.ingredient.name, ingredient_path(di.ingredient) %></p>
 <% end %>
 
@@ -23,7 +19,7 @@
 <% @drink.reviews.each do |r| %>
   <p><%= 'by ' + "#{r.user.name} , " + "#{r.rating}" + '/5' %></p>
   <p><%= r.content %></p>
-  
+
   <% if r.user == current_user %>
     <p><%= link_to "Edit Review", edit_review_path(r) %>  | <%= link_to "Delete", "/reviews/#{r.id}", method: :delete %> </p>
   <% end %>
