@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'application#root'
   get '/logout', to: 'users#logout', as: 'logout'
-  get '/auth/facebook/callack', to: 'sessions#fbcreate'
+  get '/auth/facebook/callback', to: 'sessions#fbcreate'
 
   resources :users do
     resources :reviews, only:[:index]
