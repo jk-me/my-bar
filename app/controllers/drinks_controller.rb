@@ -1,5 +1,6 @@
 class DrinksController < ApplicationController
   before_action :redirect_if_not_logged_in
+
   def index
     if params[:filter] == '4+ ingredients'
       @drinks = Drink.complex

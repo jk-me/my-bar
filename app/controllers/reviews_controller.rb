@@ -2,9 +2,10 @@ class ReviewsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def index
-    if params[:user_id]
+    if params[:user_id] == current_user.id.to_s
       @reviews = current_user.reviews
     else
+      flash[:error]= 'You may only view your own list of reviews.'
       redirect_to user_path(current_user)
     end
   end
@@ -12,18 +13,31 @@ class ReviewsController < ApplicationController
   def new
     if params[:drink_id]
       @drink = Drink.find_by_id(params[:drink_id])
+      @review = Review.new
+    else
+      flash[:error] = 'You must select a drink before creating a review.'
+      redirect_to user_path(current_user)
     end
-    @review = Review.new
+
   end
 
   def create
-    # byebug
-    @review = Review.create(review_params)
-    redirect_to drink_path(@review.drink.id)
+    byebug
+    if review_params[:user_id] != current_user.id.to_s
+      flash[:error] = 'Do not attempt to create reviews for other users.'
+      redirect_to user_path(current_user)
+    else
+      @review = Review.create(review_params)
+      redirect_to drink_path(@review.drink.id)
+    end
   end
 
   def edit
     @review = Review.find(params[:id])
+    if @review.user != current_user
+      flash[:error] = 'You may only edit your own reviews.'
+      redirect_to user_path(current_user)
+    end
   end
 
   def update
@@ -35,8 +49,13 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find_by_id(params[:id])
-    @review.destroy
-    redirect_to user_reviews_path(current_user.id)
+    if @review.user != current_user
+      flash[:error] = 'You may only delete your own reviews.'
+      redirect_to user_path(current_user)
+    else
+      @review.destroy
+      redirect_to user_reviews_path(current_user.id)
+    end
   end
 
   private
