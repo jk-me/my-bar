@@ -7,9 +7,18 @@ class SessionsController < ApplicationController
   def create #submit login
     # byebug
     @user = User.find_by(name: sess_params[:name])
-    return head(:forbidden) unless @user.authenticate(sess_params[:password])
-    session[:user_id] = @user.id
-    redirect_to user_path(@user)
+    if @user
+      if @user.authenticate(sess_params[:password])
+        session[:user_id] = @user.id
+        redirect_to user_path(@user)
+      else
+        flash[:notice] = 'Wrong username or password.'
+        redirect_to new_session_path
+      end
+    else
+      flash[:notice] = 'Wrong username or password.'
+      redirect_to new_session_path
+    end
   end
 
   def fbcreate

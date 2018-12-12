@@ -1,9 +1,16 @@
 <h1>Log In</h1>
 
+<% if flash[:notice] %>
+  <div >
+    <span class="notice"><%= flash[:notice] %></span>
+  </div>
+<% end %>
 
-<%= link_to "Login with Facebook", '/auth/facebook'%>
+
 <%= form_for @user, url: sessions_path do |f| %>
   <p>Username: <%= f.text_field :name %></p>
   <p>Password: <%= f.password_field :password %></p>
   <%= f.submit "Log In"%>
 <% end %>
+
+<%= link_to "Login with Facebook", '/auth/facebook'%>
