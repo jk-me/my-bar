@@ -16,12 +16,4 @@
 <p><%= link_to "Add a Review", new_drink_review_path(@drink) %></p>
 <br>
 
-<% @drink.reviews.each do |r| %>
-  <p><%= 'by ' + "#{r.user.name} , " + "#{r.rating}" + '/5' %></p>
-  <p><%= r.content %></p>
-
-  <% if r.user == current_user %>
-    <p><%= link_to "Edit Review", edit_review_path(r) %>  | <%= link_to "Delete", "/reviews/#{r.id}", method: :delete %> </p>
-  <% end %>
-
-<% end %>
+<%= render partial: 'layouts/review_table', locals: {reviews: @drink.reviews} %>

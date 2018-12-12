@@ -35,6 +35,7 @@ class DrinksController < ApplicationController
   end
 
   def update
+    byebug
     @drink = Drink.find_by_id(params[:id])
     @drink.update(drink_params)
     if @drink.valid?
@@ -54,5 +55,7 @@ class DrinksController < ApplicationController
 
   def drink_params
     params.require(:drink).permit(:name, :description, user_ids:[], ingredient_ids:[], ingredients_attributes:[:name] )
+    # params.permit(ingredients:[ :id, :parts])
   end
+
 end
