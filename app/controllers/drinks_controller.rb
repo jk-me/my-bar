@@ -17,32 +17,40 @@ class DrinksController < ApplicationController
 
   def create
     # byebug
-    @drink = Drink.create(drink_params)
-    if @drink.valid?
-      redirect_to drink_path(@drink)
+    if drink_params[:user_ids][0] == current_user.id.to_s
+      @drink = Drink.create(drink_params)
+      if @drink.valid?
+        redirect_to drink_path(@drink)
+      else
+        render :new
+      end
     else
-      render :new
+      flash[:error]="You may not access another user's data"
+      redirect_to user_path(current_user)
     end
   end
 
   def show
-    # byebug
     @drink = Drink.find_by_id(params[:id])
   end
 
   def edit
     @drink = Drink.find_by_id(params[:id])
-
   end
 
   def update
-    byebug
-    @drink = Drink.find_by_id(params[:id])
-    @drink.update(drink_params)
-    if @drink.valid?
-      redirect_to drink_path(@drink)
+    # byebug
+    if drink_params[:user_ids][0] == current_user.id.to_s
+      @drink = Drink.find_by_id(params[:id])
+      @drink.update(drink_params)
+      if @drink.valid?
+        redirect_to drink_path(@drink)
+      else
+        render :edit
+      end
     else
-      render :edit
+      flash[:error]="You may not access another user's data"
+      redirect_to user_path(current_user)
     end
   end
 

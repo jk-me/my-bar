@@ -22,13 +22,12 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    byebug
-    if review_params[:user_id] != current_user.id.to_s
+    if review_params[:user_id] == current_user.id.to_s
+      @review = Review.create(review_params)
+      redirect_to drink_path(@review.drink)
+    else
       flash[:error] = 'Do not attempt to create reviews for other users.'
       redirect_to user_path(current_user)
-    else
-      @review = Review.create(review_params)
-      redirect_to drink_path(@review.drink.id)
     end
   end
 
@@ -42,9 +41,13 @@ class ReviewsController < ApplicationController
 
   def update
     @review = Review.find(params[:id])
-    @review.update(review_params)
-    redirect_to drink_path(@review.drink.id)
-
+    if @review.user == current_user
+      @review.update(review_params)
+      redirect_to drink_path(@review.drink)
+    else
+      flash[:error] = 'Do not attempt to edit reviews of other users.'
+      redirect_to user_path(current_user)
+    end
   end
 
   def destroy
