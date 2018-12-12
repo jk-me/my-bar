@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new]
   end
 
-  resources :ingredients, only: [:index, :show]
+  resources :ingredients, only: [:index, :show, :edit, :update]
   resources :reviews
   resources :sessions, only: [:new,:create]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

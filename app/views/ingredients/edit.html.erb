@@ -1,0 +1,11 @@
+<h1>Edit Ingredient</h1>
+
+<%= render partial:'layouts/errors_expl', locals: {var: @ingredient} %>
+
+<%= form_for @ingredient do |f| %>
+  <p>Name:</p>
+  <p><%= f.text_field :name %></p>
+  <p>Description:</p>
+  <p><%= f.text_area :description %></p>
+  <%= f.submit %>
+<% end %>

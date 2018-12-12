@@ -5,7 +5,7 @@ class Drink < ApplicationRecord
   has_many :ingredients, through: :drinks_ingredients
   has_many :reviews
 
-  validates :name, presence: true
+  validates :name, presence: true , uniqueness: {case_sensitive: false}
 
   accepts_nested_attributes_for :ingredients, reject_if: proc { |att| att['name'].blank? }
   accepts_nested_attributes_for :drinks_ingredients, reject_if: proc { |att| att['name'].blank? }
