@@ -16,17 +16,21 @@ class DrinksController < ApplicationController
   end
 
   def create
-    # byebug
-    if drink_params[:user_ids][0] == current_user.id.to_s
-      @drink = Drink.create(drink_params)
-      if @drink.valid?
-        redirect_to drink_path(@drink)
-      else
-        render :new
+    byebug
+    #//ingredient = product/item, drink = package
+    if !drink_params[:user_ids].nil?
+      redirect_if_wrong_user(drink_params[:user_ids][0])
+    end
+    @drink = Drink.create(drink_params)
+    @drink_ingredients = params[:ingredients].delete_if { |ingredient| !ingredient[:parts].present? || (ingredient[:parts]).to_i <= 0}
+    if @drink.valid?
+      @drink_ingredients.each do |x|
+        di = DrinksIngredient.create(drink_id: @drink.id, ingredient_id: x['id'], parts: x['parts'])
+        di.save!
       end
+      redirect_to drink_path(@drink)
     else
-      flash[:error]="You may not access another user's data"
-      redirect_to user_path(current_user)
+      render :new
     end
   end
 
@@ -63,8 +67,10 @@ class DrinksController < ApplicationController
   private
 
   def drink_params
-    params.require(:drink).permit(:name, :description, user_ids:[], ingredient_ids:[], ingredients_attributes:[:name] )
-    # params.permit(ingredients:[ :id, :parts])
+    params.require(:drink).permit(:name, :description,
+      user_ids:[], #add to fav checkbox
+      #ingredient_ids:[], #ingredients checkbox
+      ingredients_attributes:[:name]) #new ingredient attribute (accepts nested attributes)
   end
 
 end

@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
    end
   end
 
-  def redirect_if_wrong_user
-   if params[:id] != current_user.id.to_s
+  def redirect_if_wrong_user (x)
+   if x != current_user.id.to_s
      flash[:error]="You may not access another user's data"
      redirect_to user_path(current_user)
    end

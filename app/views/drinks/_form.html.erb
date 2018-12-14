@@ -1,14 +1,18 @@
 <%= form_for @drink do |f| %>
-  <div class="">
-    <p>Name:</p>
-    <%= f.text_field :name %>
-  </div>
-  <div class="">
-    <p>Description</p>
-    <%= f.text_area  :description%>
-  </div>
+  <p>Name:</p>
+  <%= f.text_field :name %>
 
-  <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name, item_wrapper_class: 'checkbox_container' %>
+  <p>Description:</p>
+  <%= f.text_area  :description%>
+
+  <p>Ingredients:</p>
+  <% Ingredient.all.each do |ing| %>
+    <div >
+    <%= hidden_field_tag 'ingredients[][id]', ing.id %>
+    <%= number_field_tag 'ingredients[][parts]', ing.find_join_record(@drink).nil? ? nil : ing.find_join_record(@drink).parts %>
+    <%= label_tag 'ingredients[][name]', "part(s) #{ing.name}" %>
+    </div>
+  <% end %>
 
   <%= f.fields_for :ingredients, @drink.ingredients.build do |ing_field| %>
     <%= ing_field.text_field :name, placeholder: "Ingredient Name" %>

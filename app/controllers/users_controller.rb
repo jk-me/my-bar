@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_if_wrong_user
+    redirect_if_wrong_user(params[:id])
     @user = current_user
   end
 
