@@ -3,8 +3,11 @@
 <%= render partial:'layouts/errors_expl', locals: {var: @ingredient} %>
 
 <%= form_for @ingredient do |f| %>
-  <p>Name:</p>
-  <p><%= f.text_field :name %></p>
+  <div class="field<%= ' field_with_errors' if @ingredient.errors[:name].any? %>">
+    <p>Name:</p>
+    <p><%= f.text_field :name %></p>
+  </div>
+
   <p>Description:</p>
   <p><%= f.text_area :description %></p>
   <%= f.submit %>

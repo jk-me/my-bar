@@ -1,13 +1,15 @@
 <%= form_for @drink do |f| %>
-  <p>Name:</p>
-  <%= f.text_field :name %>
+  <div class="field<%= ' field_with_errors' if @drink.errors[:name].any? %>">
+    <p>Name:</p>
+    <%= f.text_field :name %>
+  </div>
 
   <p>Description:</p>
   <%= f.text_area  :description%>
 
   <p>Ingredients:</p>
   <% Ingredient.all.each do |ing| %>
-    <div >
+    <div>
     <%= hidden_field_tag 'ingredients[][id]', ing.id %>
     <%= number_field_tag 'ingredients[][parts]', ing.find_join_record(@drink).nil? ? nil : ing.find_join_record(@drink).parts %>
     <%= "part(s) #{ing.name}" %>
