@@ -42,8 +42,8 @@ class DrinksController < ApplicationController
 
   def update
     redirect_if_wrong_user(drink_params[:user_ids][0]) if !drink_params[:user_ids].nil?
-
     @drink = Drink.find_by_id(params[:id])
+    @drink.users.delete(current_user) if drink_params[:user_id].nil?
     @drink.drinks_ingredients.each{|di| di.destroy}
     @drink.update(drink_params)
       if @drink.valid?

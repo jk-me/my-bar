@@ -23,7 +23,7 @@
     <%= di_field.text_field :ingredient_name, placeholder: "Ingredient Name" %>
   <% end %>
 
-  <p><%= check_box_tag :'drink[user_ids][]', current_user.id %> Add to your favorites</p>
+  <p><%= check_box_tag :'drink[user_ids][]', current_user.id, @drink.users.include?(current_user) ? true : false %> Include in your favorites</p>
 
   <%= f.submit %>
 <% end %>
