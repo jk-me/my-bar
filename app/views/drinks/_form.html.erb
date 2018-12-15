@@ -10,14 +10,18 @@
     <div >
     <%= hidden_field_tag 'ingredients[][id]', ing.id %>
     <%= number_field_tag 'ingredients[][parts]', ing.find_join_record(@drink).nil? ? nil : ing.find_join_record(@drink).parts %>
-    <%= label_tag 'ingredients[][name]', "part(s) #{ing.name}" %>
+    <%= "part(s) #{ing.name}" %>
     </div>
   <% end %>
 
-  <%= f.fields_for :ingredients, @drink.ingredients.build do |ing_field| %>
-    <%= ing_field.text_field :name, placeholder: "Ingredient Name" %>
+  <p>New Ingredient:</p>
+  <%= f.fields_for :drinks_ingredients, @drink.drinks_ingredients.build do |di_field| %>
+    <% if @drink.id %>
+      <%= di_field.hidden_field :drink_id, value: @drink.id %>
+    <% end %>
+    <%= di_field.number_field :parts, placeholder: "no. parts" %>
+    <%= di_field.text_field :ingredient_name, placeholder: "Ingredient Name" %>
   <% end %>
-
 
   <p><%= check_box_tag :'drink[user_ids][]', current_user.id %> Add to your favorites</p>
 
