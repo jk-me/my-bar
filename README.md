@@ -1,24 +1,37 @@
-# README
+# MyBar
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A web application to organize bar drinks. A user can create an account, add to a master list of drinks, review them, and create a personal list of favorite drinks.
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-* System dependencies
+### Prerequisites
 
-* Configuration
+This app is built on the ruby gems listed in the Gemfile, including ruby 2.3.3 and rails 5.2.1
 
-* Database creation
+### Installing
 
-* Database initialization
+To deploy the app, run the following commands in your terminal after navigating to the root directory of this repository. You may opt to seed the database with sample data using $rake db:seed
 
-* How to run the test suite
+```
+$bundle install
+$rake db:migrate
+$rake db:seed
+$rails s
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Then navigate to localhost:3000 in your web browser.
 
-* Deployment instructions
+## Contributing
 
-* ...
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Author
+
+* **Jenny Kam**
+ [jk-me](https://github.com/jk-me)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
