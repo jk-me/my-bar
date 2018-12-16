@@ -15,4 +15,4 @@
 <div>Reviews: </div>
 <p><%= link_to "Add a Review", new_drink_review_path(@drink) %></p>
 
-<%= render partial: 'layouts/review_table', locals: {reviews: @drink.reviews} %>
+<%= render partial: 'layouts/review_table', locals: {reviews: @drink.reviews, index: false} %>

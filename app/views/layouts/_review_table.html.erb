@@ -1,5 +1,8 @@
 <table>
   <thead>
+    <%if index %>
+      <th>Drink</th>
+    <% end %>
     <th>Rating</th>
     <th>Content</th>
     <th>Author</th>
@@ -7,6 +10,9 @@
   <tbody>
     <% reviews.each do |r| %>
       <tr>
+        <%if index %>
+          <td><%= r.drink.name %></td>
+        <% end %>
         <td><%= "#{r.rating}" + '/5' %></td>
         <td><%= r.content %></td>
         <td><%= r.user.name%>
