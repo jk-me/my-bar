@@ -1,4 +1,11 @@
 <h2>All Ingredients</h2>
+
+<p>Sort By:</p>
+<%= form_tag '/ingredients', method:'get' do %>
+  <%= select_tag 'filter',options_for_select(['Number of Drinks (desc)','Alphabetical']) ,include_blank: true %>
+  <%= submit_tag 'Filter List' %>
+<% end %>
+
 <p>Name, (no. of drinks)</p>
 <% @ingredients.each do |i| %>
   <p><%= link_to i.name, ingredient_path(i) %>, (<%= i.drinks.count %>)</p>

@@ -2,7 +2,14 @@ class IngredientsController < ApplicationController
   before_action :redirect_if_not_logged_in
 
   def index
-    @ingredients = Ingredient.all
+    # byebug
+    if params[:filter] == 'Number of Drinks (desc)'
+      @ingredients = Ingredient.numberofdrinks
+    elsif params[:filter] == 'Alphabetical'
+      @ingredients = Ingredient.alphabetical
+    else
+      @ingredients = Ingredient.all
+    end
   end
 
   def show

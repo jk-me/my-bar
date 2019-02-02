@@ -7,4 +7,12 @@ class Ingredient < ApplicationRecord
   def find_join_record(drink)
     self.drinks_ingredients.find_by(drink_id: drink.id)
   end
+
+  def self.alphabetical
+    self.order(:name)
+  end
+
+
+  scope :numberofdrinks, -> { self.joins(:drinks).group('ingredients.id').order("count(ingredients.id) desc")}
+
 end
