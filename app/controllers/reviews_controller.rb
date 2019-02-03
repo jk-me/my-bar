@@ -18,8 +18,13 @@ class ReviewsController < ApplicationController
       flash[:error] = 'You must select a drink before creating a review.'
       redirect_to user_path(current_user)
     end
-
   end
+
+  def show
+    review = Review.find(params[:id])
+    render json: review.to_json
+  end
+
 
   def create
     if review_params[:user_id] == current_user.id.to_s

@@ -6,6 +6,9 @@ $(function(){
 function listener(){
   $('.full-rev').on('click', function(e){
     e.preventDefault()
-    alert(`id is ${$(this).data('id')}`)
+    let id = $(this).data('id')
+    $.get('/reviews/'+ id, function(data){
+      alert(`${data.content}`)
+    })
   })
 }
