@@ -14,7 +14,9 @@
           <td><%= r.drink.name %></td>
         <% end %>
         <td><%= "#{r.rating}" + '/5' %></td>
-        <td><%= r.content %></td>
+        <td><%= r.content %>
+            <%= link_to 'See Full Review', '#', class:'full-rev'%>
+        </td>
         <td><%= r.user.name%>
 
           <% if r.user == current_user %>
