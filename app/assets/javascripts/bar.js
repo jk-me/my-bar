@@ -5,7 +5,7 @@ $(function(){
 
 function listener(){
   $('.full-rev').on('click', function(e){
-    // e.preventDefault()
-    alert('click link')
+    e.preventDefault()
+    alert(`id is ${$(this).data('id')}`)
   })
 }
