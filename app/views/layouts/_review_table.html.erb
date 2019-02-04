@@ -15,7 +15,7 @@
         <% end %>
         <td><%= "#{r.rating}" + '/5' %></td>
         <td id='review-cell-<%= r.id %>'><%= truncate r.content %>
-            <%= link_to 'See Full Review', '#', class:'full-rev', data: {id:"#{r.id}"}%>
+            <%= link_to 'See More', '#', class:'full-rev', data: {id:"#{r.id}"}%>
         </td>
         <td><%= r.user.name%>
 
