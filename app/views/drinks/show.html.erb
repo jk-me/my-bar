@@ -1,20 +1,24 @@
-<p><%= link_to "Edit", edit_drink_path(@drink) %> | <%= link_to "Delete", "/drinks/#{@drink.id}", method: :delete %> </p>
+<p><%= link_to "Edit", edit_drink_path(@drink), id:'edit-d' %> | <%= link_to "Delete", "/drinks/#{@drink.id}", method: :delete, id:'del-d' %></p>
 
-<p><%= link_to "Next Drink with #{@ingredient.name}", '#', class: 'js-next', data:{id:"#{@ingredient.drinks.index(@drink)}"} %></p>
-<h1><%= @drink.name %></h1>
 
-<p><%= @drink.description %></p> <br>
+<%= link_to "Next Drink with #{@ingredient.name}", '#', class: 'js-next', data:{id: "#{@ingredient.id}", index:"#{@ingredient.drinks.index(@drink)}"} %>
+
+<h1 id='d-name'><%= @drink.name %></h1>
+
+<p id='d-desc'><%= @drink.description %></p> <br>
 
 
 
 <p>Ingredients: </p>
-<% @drink.drinks_ingredients.each do |di| %>
-  <p><%= "#{di.parts} parts" %> <%= link_to di.ingredient.name, ingredient_path(di.ingredient) %></p>
-<% end %>
+<div id="d-ings">
+  <% @drink.drinks_ingredients.each do |di| %>
+    <p><%= "#{di.parts} parts" %> <%= link_to di.ingredient.name, ingredient_path(di.ingredient) %></p>
+  <% end %>
+</div>
 
 <br>
 
 <div>Reviews: </div>
-<p><%= link_to "Add a Review", new_drink_review_path(@drink) %></p>
+<p><%= link_to "Add a Review", new_drink_review_path(@drink), id:'add-rev' %></p>
 
 <%= render partial: 'layouts/review_table', locals: {reviews: @drink.reviews, index: false} %>

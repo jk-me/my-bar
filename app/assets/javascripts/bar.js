@@ -53,8 +53,23 @@ function displayDrink(){
 function nextDrink(){
   $('.js-next').on('click', function(e){
     e.preventDefault()
-    let nextId = $(this).data('id') + 1
-    
-
+    let ingId = $(this).data('id')
+    let nextIndex = $(this).data('index') + 1
+    $.get("/ingredients/"+ ingId + ".json", function(ingred) {
+      $.get('/ingredients/' + ingId + '/drinks/' + ingred.drinks[nextIndex].id + '.json', function(drink){
+        // debugger
+        $('.js-next').attr("data-index", nextIndex)
+        $('#d-name').text(drink.name)
+        $('#d-desc').text(drink.desc)
+        $('#edit-d').attr("href", '/drinks/'+ drink.id +'/edit' )
+        $('#del-d').attr("href",'/drinks/' + drink.id )
+        $('#add-rev').attr("href",'/drinks/'+ drink.id + '/reviews/new' )
+        let html = ''
+        for (let i=0 ; i<drink.ingredients.length ; i++ ){
+          html += `<p>${drink.drinks_ingredients[i].parts} parts <a href="/ingredients/${ingred.id}"> ${drink.ingredients[i].name}</a></p>`
+        }
+        $('#d-ings').html(html)
+      })
+    })
   })
 }
