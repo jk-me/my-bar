@@ -72,7 +72,22 @@ function nextDrink(){
           html += `<p>${drink.drinks_ingredients[i].parts} parts <a href="/ingredients/${drink.ingredients[i].id}"> ${drink.ingredients[i].name}</a></p>`
         }
         $('#d-ings').html(html)
+        let revHTML = ''
+        for (const rev of drink.reviews){
+
+        }
+        $('#review-tr').html()
       })
     })
   })
+}
+
+class Review {
+  constructor(obj){
+    this.rating = obj.rating
+    this.content = obj.content
+    this.user_name = obj.user_name
+    this.id = obj.id
+    this.user_id = obj.user_id
+  }
 }

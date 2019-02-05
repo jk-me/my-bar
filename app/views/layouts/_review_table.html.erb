@@ -9,7 +9,7 @@
   </thead>
   <tbody>
     <% reviews.each do |r| %>
-      <tr>
+      <tr id='review-tr'>
         <%if index %>
           <td><%= r.drink.name %></td>
         <% end %>
