@@ -57,7 +57,9 @@ function nextDrink(){
     let nextIndex = parseInt($(this).attr("data-index")) + 1
     $.get("/ingredients/"+ ingId + ".json", function(ingred) {
       $.get('/ingredients/' + ingId + '/drinks/' + ingred.drinks[nextIndex].id + '.json', function(drink){
-        $('.js-next').attr("data-index", nextIndex)
+        if (ingred.drinks[nextIndex + 1])
+          {$('.js-next').attr("data-index", nextIndex)}
+        else {$('.js-next').remove()}
         $('#d-name').text(drink.name)
         $('#d-desc').text(drink.desc)
         $('#edit-d').attr("href", '/drinks/'+ drink.id +'/edit' )
