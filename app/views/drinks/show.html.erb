@@ -1,5 +1,11 @@
 <p><%= link_to "Edit", edit_drink_path(@drink), id:'edit-d' %> | <%= link_to "Delete", "/drinks/#{@drink.id}", method: :delete, id:'del-d' %></p>
 
+<% if @user %>
+  <% if @user.drinks.index(@drink) < (@user.drinks.length - 1) %>
+    <%= link_to "Next Drink on your List", '#', class: 'js-next', data:{id: "#{@user.id}", index:"#{@user.drinks.index(@drink)}", nest: "users"} %>
+  <% end %>
+<% end %>
+
 <% if @ingredient %>
   <% if @ingredient.drinks.index(@drink) < (@ingredient.drinks.length - 1) %>
     <%= link_to "Next Drink with #{@ingredient.name}", '#', class: 'js-next', data:{id: "#{@ingredient.id}", index:"#{@ingredient.drinks.index(@drink)}", nest: "ingredients"} %>
