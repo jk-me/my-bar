@@ -67,7 +67,7 @@ function nextDrink(){
         $('#add-rev').attr("href",'/drinks/'+ drink.id + '/reviews/new' )
         let html = ''
         for (let i=0 ; i<drink.ingredients.length ; i++ ){
-          html += `<p>${drink.drinks_ingredients[i].parts} parts <a href="/ingredients/${ingred.id}"> ${drink.ingredients[i].name}</a></p>`
+          html += `<p>${drink.drinks_ingredients[i].parts} parts <a href="/ingredients/${drink.ingredients[i].id}"> ${drink.ingredients[i].name}</a></p>`
         }
         $('#d-ings').html(html)
       })
