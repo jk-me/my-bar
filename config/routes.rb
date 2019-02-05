@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :reviews, only:[:index]
+    resources :drinks, only:[:show]
   end
   resources :drinks do
     resources :reviews, only: [:new]

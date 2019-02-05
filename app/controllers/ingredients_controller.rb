@@ -14,6 +14,10 @@ class IngredientsController < ApplicationController
 
   def show
     @ingredient = Ingredient.find_by_id(params[:id])
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @ingredient}
+    end
   end
 
   def edit
