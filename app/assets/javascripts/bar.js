@@ -1,6 +1,7 @@
 $(function(){
   console.log('bar.js loaded')
   fullReview()
+  displayDrink()
 })
 
 function fullReview(){
@@ -25,6 +26,17 @@ function miniReview(){
       $(`#review-cell-`+ id).append(
       ` <a class="full-rev" data-id=${id} href="#">See More</a>`)
       fullReview()
+    })
+  })
+}
+
+function displayDrink(){
+  $('.d-disp').on('click', function(e){
+    e.preventDefault()
+    let id = $(this).data('id')
+    $.get('/drinks/'+ id +'.json' , function(data){
+      // debugger
+      $('#drink-display').text(data.name)
     })
   })
 }

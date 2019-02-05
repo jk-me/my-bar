@@ -34,7 +34,10 @@ class DrinksController < ApplicationController
 
   def show
     @drink = Drink.find_by_id(params[:id])
-    render json: @drink
+    # respond_to do |f|
+      # f.html {render :show}
+      render json: @drink
+    # end
   end
 
   def edit
