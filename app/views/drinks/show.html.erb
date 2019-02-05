@@ -1,4 +1,6 @@
 <p><%= link_to "Edit", edit_drink_path(@drink) %> | <%= link_to "Delete", "/drinks/#{@drink.id}", method: :delete %> </p>
+
+<p><%= link_to "Next Drink with #{@ingredient.name}", '#', class: 'js-next', data:{id:"#{@ingredient.drinks.index(@drink)}"} %></p>
 <h1><%= @drink.name %></h1>
 
 <p><%= @drink.description %></p> <br>

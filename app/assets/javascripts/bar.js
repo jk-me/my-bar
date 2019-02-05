@@ -2,6 +2,7 @@ $(function(){
   console.log('bar.js loaded')
   fullReview()
   displayDrink()
+  nextDrink()
 })
 
 function fullReview(){
@@ -46,5 +47,14 @@ function displayDrink(){
       html += `<a href='/drinks/${data.id}'>See More Info </a>`
       $('#drink-display').html(html)
     })
+  })
+}
+
+function nextDrink(){
+  $('.js-next').on('click', function(e){
+    e.preventDefault()
+    let nextId = $(this).data('id') + 1
+    
+
   })
 }

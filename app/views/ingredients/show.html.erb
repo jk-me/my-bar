@@ -7,7 +7,7 @@
 
 <div class="col-sm-6">
   <% @ingredient.drinks.each do |d|%>
-    <p><%= link_to d.name, ingredient_drink_path(d) %> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %></p>
+    <p><%= link_to d.name, ingredient_drink_path(@ingredient, d) %> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %></p>
   <% end %>
 </div>
 
