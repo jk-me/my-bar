@@ -3,6 +3,7 @@
 
 <%= link_to "Next Drink with #{@ingredient.name}", '#', class: 'js-next', data:{id: "#{@ingredient.id}", index:"#{@ingredient.drinks.index(@drink)}"} %>
 
+
 <h1 id='d-name'><%= @drink.name %></h1>
 
 <p id='d-desc'><%= @drink.description %></p> <br>

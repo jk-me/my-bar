@@ -54,10 +54,9 @@ function nextDrink(){
   $('.js-next').on('click', function(e){
     e.preventDefault()
     let ingId = $(this).data('id')
-    let nextIndex = $(this).data('index') + 1
+    let nextIndex = parseInt($(this).attr("data-index")) + 1
     $.get("/ingredients/"+ ingId + ".json", function(ingred) {
       $.get('/ingredients/' + ingId + '/drinks/' + ingred.drinks[nextIndex].id + '.json', function(drink){
-        // debugger
         $('.js-next').attr("data-index", nextIndex)
         $('#d-name').text(drink.name)
         $('#d-desc').text(drink.desc)
