@@ -3,10 +3,41 @@
 
 <%= form_for @review do |f| %>
 
-  <%= render partial:'form', locals: {f: f} %>
+  <%= f.label :rating , "Rating (out of 5)"%>
+  <%= f.select :rating, (1..5).to_a %> <br>
+  
+  <%= f.label :content %> <br>
+  <%= f.text_area :content %> <br>
 
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :drink_id, value: @drink.id %>
 
   <%= f.submit %>
 <% end %>
+
+<div class="pie">
+
+</div>
+
+<script type="text/javascript">
+  $('form').submit(function(e){
+
+
+    $.ajax({
+           type: "POST",
+           url: '/reviews',
+
+           data: $(this).serialize(), // serializes the form's elements.
+            datatype: 'json',
+           success: function(data)
+           {
+             debugger
+               alert(data); // show response from the php script.
+           }
+         });
+
+    e.preventDefault();
+
+    })
+
+</script>
