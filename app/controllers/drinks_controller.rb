@@ -36,6 +36,10 @@ class DrinksController < ApplicationController
     if params[:ingredient_id]
       @ingredient = Ingredient.find(params[:ingredient_id])
     end
+
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+    end
     @drink = Drink.find_by_id(params[:id])
     respond_to do |f|
       f.html {render :show}
