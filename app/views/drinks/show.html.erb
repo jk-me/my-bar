@@ -1,7 +1,7 @@
 <p><%= link_to "Edit", edit_drink_path(@drink), id:'edit-d' %> | <%= link_to "Delete", "/drinks/#{@drink.id}", method: :delete, id:'del-d' %></p>
 
 <% if @ingredient.drinks.index(@drink) < (@ingredient.drinks.length - 1) %>
-  <%= link_to "Next Drink with #{@ingredient.name}", '#', class: 'js-next', data:{id: "#{@ingredient.id}", index:"#{@ingredient.drinks.index(@drink)}"} %>
+  <%= link_to "Next Drink with #{@ingredient.name}", '#', class: 'js-next', data:{id: "#{@ingredient.id}", index:"#{@ingredient.drinks.index(@drink)}", nest: "ingredients"} %>
 <% end %>
 
 

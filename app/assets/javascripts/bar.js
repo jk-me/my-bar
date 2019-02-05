@@ -54,9 +54,11 @@ function nextDrink(){
   $('.js-next').on('click', function(e){
     e.preventDefault()
     let ingId = $(this).data('id')
+    let nest = $(this).data('nest')
+    // debugger
     let nextIndex = parseInt($(this).attr("data-index")) + 1
-    $.get("/ingredients/"+ ingId + ".json", function(ingred) {
-      $.get('/ingredients/' + ingId + '/drinks/' + ingred.drinks[nextIndex].id + '.json', function(drink){
+    $.get("/"+ nest +"/"+ ingId + ".json", function(ingred) {
+      $.get('/'+ nest +'/' + ingId + '/drinks/' + ingred.drinks[nextIndex].id + '.json', function(drink){
         if (ingred.drinks[nextIndex + 1])
           {$('.js-next').attr("data-index", nextIndex)}
         else {$('.js-next').remove()}
