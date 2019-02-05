@@ -36,7 +36,15 @@ function displayDrink(){
     let id = $(this).data('id')
     $.get('/drinks/'+ id +'.json' , function(data){
       // debugger
-      $('#drink-display').text(data.name)
+      let html = `
+        <h3>${data.name}</h3>
+        <p>Description: ${data.description}</p>
+      `
+      for (let i=0 ; i<data.ingredients.length ; i++ ){
+        html += `<p>${data.drinks_ingredients[i].parts} parts ${data.ingredients[i].name}</p>`
+      }
+      html += `<a href='/drinks/${data.id}'>See More Info </a>`
+      $('#drink-display').html(html)
     })
   })
 }
