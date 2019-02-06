@@ -74,9 +74,18 @@ function nextDrink(){
         $('#d-ings').html(html)
         let revHTML = ''
         for (const rev of drink.reviews){
-
+          let n = new Review(rev)
+          revHTML += n.trHTML()
         }
-        $('#review-tr').html()
+        $('tbody').html(revHTML)
+        $.get('/current_id', function(result){
+          for (const el of $('.td-user')){
+            if (parseInt(el.dataset.id) === result.id){
+              el.innerHTML += `<p><a href="/reviews/${el.dataset.rev}/edit">Edit</a>  | <a rel="nofollow" data-method="delete" href="/reviews/${el.dataset.rev}">Delete</a></p>`
+            }
+          }
+        })
+        fullReview()
       })
     })
   })
@@ -90,4 +99,20 @@ class Review {
     this.id = obj.id
     this.user_id = obj.user_id
   }
+}
+
+Review.prototype.trHTML = function(){
+  let cont = this.content.substring(0,27)
+  let html = `  <tr>
+    <td>${this.rating}/5</td>
+    <td id='review-cell-${this.id}'> ${cont}`
+    if (cont.length < this.content.length){
+      html += `... <a class="full-rev" data-id="${this.id}" href="#">See More</a>`
+    }
+  html += `
+    </td>
+    <td class='td-user' data-id='${this.user_id}' data-rev='${this.id}'>${this.user_name}
+    </td>
+  </tr>`
+  return html
 }
