@@ -8,7 +8,7 @@
 
 <div class="col-sm-6">
   <% @drinks.each do |d| %>
-    <p> <%= link_to d.name, drink_path(d), class:'d-disp', data: {id: "#{d.id}"}  %>
+    <p> <%= link_to d.name, drink_path(d)%> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %>
   </p>
   <% end %>
 </div>
