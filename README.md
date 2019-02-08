@@ -31,6 +31,8 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 * **Jenny Kam**
  [jk-me](https://github.com/jk-me)
+* **Blog:** [my-bar/js-rails-proj](http://jellyjen.com/rails_w_javascript_project)
+
 
 ## License
 
