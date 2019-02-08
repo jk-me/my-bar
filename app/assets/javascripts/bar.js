@@ -38,7 +38,6 @@ function displayDrink(){
     e.preventDefault()
     let id = $(this).data('id')
     $.get('/drinks/'+ id +'.json' , function(data){
-      // debugger
       let html = `
         <h5>${data.name}</h5>
         <p>Description: ${data.description}</p>
@@ -55,15 +54,37 @@ function displayDrink(){
 function nextDrink(){
   $('.js-next').on('click', function(e){
     e.preventDefault()
-    let ingId = $(this).data('id')
     let nest = $(this).data('nest')
-    // debugger
+    let route1
+    let route2
     let nextIndex = parseInt($(this).attr("data-index")) + 1
-    $.get("/"+ nest +"/"+ ingId + ".json", function(ingred) {
-      $.get('/'+ nest +'/' + ingId + '/drinks/' + ingred.drinks[nextIndex].id + '.json', function(drink){
-        if (ingred.drinks[nextIndex + 1])
-          {$('.js-next').attr("data-index", nextIndex)}
-        else {$('.js-next').remove()}
+    let nestId
+    if ($(this).data('nest')){
+      nestId = $(this).data('id')
+      route1 = `/${nest}/${nestId}.json`
+    }
+    else{
+      route1 = `/drinks.json`
+      // route2 = `/drinks/${nextIndex}.json`
+    }
+    $.get(route1, function(nestData) {
+      if (nest){ route2 = `/${nest}/${nestId}/drinks/${nestData.drinks[nextIndex].id}.json`}
+      else{ route2 = `/drinks/${nestData[nextIndex].id}.json`}
+      // debugger
+      $.get(route2, function(drink){
+        if (nest){
+          if (nestData.drinks[nextIndex + 1]){
+            $('.js-next').attr("data-index", nextIndex)
+          }
+          else {$('.js-next').remove()}
+        }
+        else{
+          if (nestData[nextIndex + 1]){
+            $('.js-next').attr("data-index", nextIndex)
+          }
+          else {$('.js-next').remove()}
+        }
+        // debugger
         $('#d-name').text(drink.name)
         $('#d-desc').text(drink.desc)
         $('#edit-d').attr("href", '/drinks/'+ drink.id +'/edit' )
@@ -80,6 +101,7 @@ function nextDrink(){
           revHTML += n.trHTML()
         }
         $('tbody').html(revHTML)
+
         $.get('/current_id', function(result){
           for (const el of $('.td-user')){
             if (parseInt(el.dataset.id) === result.id){
@@ -87,6 +109,7 @@ function nextDrink(){
             }
           }
         })
+
         fullReview()
       })
     })
@@ -116,21 +139,13 @@ function submitRev(){
            data: $(this).serialize(), // serializes the form's elements.
            dataType: 'json'
     }).success(function(data) {
-       // let n = new Review(data)
-       // let revHTML = n.trHTML()
-       // debugger
-       //
-       // $('tbody').append(revHTML)
-
       $.get('/current_id', function(result){
         if (parseInt(data.user_id) === result.id){
-
           let n = new Review(data)
           let revHTML = n.trHTML()
           $('tbody').append(revHTML)
           let user = $('.td-user')[$('.td-user').length - 1]
           let userID = user.dataset.id
-        // if (parseInt(userID) === result.id){
           user.innerHTML += `<p><a href="/reviews/${user.dataset.rev}/edit">Edit</a>  | <a rel="nofollow" data-method="delete" href="/reviews/${user.dataset.rev}">Delete</a></p>`
         }
         else {return}

@@ -9,6 +9,10 @@ class DrinksController < ApplicationController
     else
       @drinks = Drink.all
     end
+    respond_to do |f|
+      f.html {render :index}
+      f.json {render json: @drinks}
+    end
   end
 
   def new
@@ -40,6 +44,7 @@ class DrinksController < ApplicationController
     if params[:user_id]
       @user = User.find(params[:user_id])
     end
+    @drinks = Drink.all
     @drink = Drink.find_by_id(params[:id])
     @review = Review.new
     respond_to do |f|
