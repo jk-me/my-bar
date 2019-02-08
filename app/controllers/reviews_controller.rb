@@ -28,7 +28,7 @@ class ReviewsController < ApplicationController
 
   def create
     # if review_params[:user_id] == current_user.id.to_s
-      # @review = Review.create(review_params)
+      @review = Review.create(review_params)
       # redirect_to drink_path(@review.drink)
       render json: @review, status:201
     # else

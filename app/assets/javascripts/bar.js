@@ -3,6 +3,7 @@ $(function(){
   fullReview()
   displayDrink()
   nextDrink()
+  submitRev()
 })
 
 function fullReview(){
@@ -89,4 +90,29 @@ function nextDrink(){
       })
     })
   })
+}
+
+function submitRev(){
+  $('form.new_review').on('submit',function(e){
+    e.preventDefault();
+    $.ajax({
+           type: "POST",
+           url: '/reviews',
+           data: $(this).serialize(), // serializes the form's elements.
+           dataType: 'json'
+    }).success(function(data) {
+       let n = new Review(data)
+       let revHTML = n.trHTML()
+       $('tbody').append(revHTML)
+
+    $.get('/current_id', function(result){
+      let user = $('.td-user')[$('.td-user').length - 1]
+      let userID = user.dataset.id
+      if (parseInt(userID) === result.id){
+        user.innerHTML += `<p><a href="/reviews/${user.dataset.rev}/edit">Edit</a>  | <a rel="nofollow" data-method="delete" href="/reviews/${user.dataset.rev}">Delete</a></p>`
+      }
+    });
+    })
+  })
+  // submitRev()
 }
