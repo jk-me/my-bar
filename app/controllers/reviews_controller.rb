@@ -10,15 +10,15 @@ class ReviewsController < ApplicationController
     end
   end
 
-  def new
-    if params[:drink_id]
-      @drink = Drink.find_by_id(params[:drink_id])
-      @review = Review.new
-    else
-      flash[:error] = 'You must select a drink before creating a review.'
-      redirect_to user_path(current_user)
-    end
-  end
+  # def new
+  #   if params[:drink_id]
+  #     @drink = Drink.find_by_id(params[:drink_id])
+  #     @review = Review.new
+  #   else
+  #     flash[:error] = 'You must select a drink before creating a review.'
+  #     redirect_to user_path(current_user)
+  #   end
+  # end
 
   def show
     @review = Review.find(params[:id])
@@ -27,14 +27,14 @@ class ReviewsController < ApplicationController
 
 
   def create
-    # if review_params[:user_id] == current_user.id.to_s
+    if review_params[:user_id] == current_user.id.to_s
       @review = Review.create(review_params)
       # redirect_to drink_path(@review.drink)
       render json: @review, status:201
-    # else
-    #   flash[:error] = 'Do not attempt to create reviews for other users.'
-    #   redirect_to user_path(current_user)
-    # end
+    else
+      flash[:error] = 'Do not attempt to create reviews for other users.'
+      redirect_to user_path(current_user)
+    end
   end
 
   def edit

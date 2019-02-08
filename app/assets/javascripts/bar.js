@@ -101,7 +101,6 @@ function revForm(){
       let data = {user_id:result.id, drink_id: drink_id}
       let rev = new Review(data)
       let formHTML = rev.formHTML()
-      debugger
       $('.rev-form').html(formHTML)
       submitRev()
     })
@@ -117,16 +116,24 @@ function submitRev(){
            data: $(this).serialize(), // serializes the form's elements.
            dataType: 'json'
     }).success(function(data) {
-       let n = new Review(data)
-       let revHTML = n.trHTML()
-       $('tbody').append(revHTML)
+       // let n = new Review(data)
+       // let revHTML = n.trHTML()
+       // debugger
+       //
+       // $('tbody').append(revHTML)
 
       $.get('/current_id', function(result){
-        let user = $('.td-user')[$('.td-user').length - 1]
-        let userID = user.dataset.id
-        if (parseInt(userID) === result.id){
+        if (parseInt(data.user_id) === result.id){
+
+          let n = new Review(data)
+          let revHTML = n.trHTML()
+          $('tbody').append(revHTML)
+          let user = $('.td-user')[$('.td-user').length - 1]
+          let userID = user.dataset.id
+        // if (parseInt(userID) === result.id){
           user.innerHTML += `<p><a href="/reviews/${user.dataset.rev}/edit">Edit</a>  | <a rel="nofollow" data-method="delete" href="/reviews/${user.dataset.rev}">Delete</a></p>`
         }
+        else {return}
       });
       $('.rev-form').empty()
     })

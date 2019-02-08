@@ -27,7 +27,7 @@ Review.prototype.trHTML = function(){
 
 Review.prototype.formHTML = function(){
   let html = `
-    <form class="new_review" id="new_review" action="/reviews" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="PNvHQTa/qhO3iVQgnzRYcJHLgYPWB0vebha6HC8HXRmAp46xzaWFjEtHWo2RnSvIQ3xbeqZ+yE8Lwq5g886Vag==">
+    <form class="new_review" id="new_review" action="/reviews" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓">
 
       <label for="review_rating">Rating (out of 5)</label>
       <select name="review[rating]" id="review_rating"><option value="1">1</option>
