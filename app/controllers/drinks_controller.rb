@@ -41,6 +41,7 @@ class DrinksController < ApplicationController
       @user = User.find(params[:user_id])
     end
     @drink = Drink.find_by_id(params[:id])
+    @review = Review.new
     respond_to do |f|
       f.html {render :show}
       f.json {render json: @drink}

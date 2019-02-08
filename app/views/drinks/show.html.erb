@@ -29,6 +29,10 @@
 <br>
 
 <div>Reviews: </div>
-<p><%= link_to "Add a Review", new_drink_review_path(@drink), id:'add-rev' %></p>
+<p><%= link_to "Add a Review", '#', id:'add-rev', data:{id:@drink.id} %></p>
 
+<div class="rev-form">
+
+</div>
+<br>
 <%= render partial: 'layouts/review_table', locals: {reviews: @drink.reviews, index: false} %>

@@ -5,6 +5,7 @@ class Review {
     this.user_name = obj.user_name
     this.id = obj.id
     this.user_id = obj.user_id
+    this.drink_id = obj.drink_id
   }
 }
 
@@ -21,5 +22,28 @@ Review.prototype.trHTML = function(){
     <td class='td-user' data-id='${this.user_id}' data-rev='${this.id}'>${this.user_name}
     </td>
   </tr>`//add links to edit/delete in nextDrink listener in bar.js
+  return html
+}
+
+Review.prototype.formHTML = function(){
+  let html = `
+    <form class="new_review" id="new_review" action="/reviews" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="PNvHQTa/qhO3iVQgnzRYcJHLgYPWB0vebha6HC8HXRmAp46xzaWFjEtHWo2RnSvIQ3xbeqZ+yE8Lwq5g886Vag==">
+
+      <label for="review_rating">Rating (out of 5)</label>
+      <select name="review[rating]" id="review_rating"><option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option></select> <br>
+
+      <label for="review_content">Content</label> <br>
+      <textarea name="review[content]" id="review_content"></textarea> <br>
+
+      <input value="${this.user_id}" type="hidden" name="review[user_id]" id="review_user_id">
+      <input value="${this.drink_id}" type="hidden" name="review[drink_id]" id="review_drink_id">
+
+      <input type="submit" name="commit" value="Create Review" data-disable-with="Create Review""">
+    </form>
+    `
   return html
 }

@@ -4,6 +4,7 @@ $(function(){
   displayDrink()
   nextDrink()
   submitRev()
+  revForm()
 })
 
 function fullReview(){
@@ -92,6 +93,21 @@ function nextDrink(){
   })
 }
 
+function revForm(){
+  $('#add-rev').on('click', function(e){
+    e.preventDefault()
+    let drink_id = $(this).data('id')
+    $.get('/current_id', function(result){
+      let data = {user_id:result.id, drink_id: drink_id}
+      let rev = new Review(data)
+      let formHTML = rev.formHTML()
+      debugger
+      $('.rev-form').html(formHTML)
+      submitRev()
+    })
+  })
+}
+
 function submitRev(){
   $('form.new_review').on('submit',function(e){
     e.preventDefault();
@@ -105,14 +121,14 @@ function submitRev(){
        let revHTML = n.trHTML()
        $('tbody').append(revHTML)
 
-    $.get('/current_id', function(result){
-      let user = $('.td-user')[$('.td-user').length - 1]
-      let userID = user.dataset.id
-      if (parseInt(userID) === result.id){
-        user.innerHTML += `<p><a href="/reviews/${user.dataset.rev}/edit">Edit</a>  | <a rel="nofollow" data-method="delete" href="/reviews/${user.dataset.rev}">Delete</a></p>`
-      }
-    });
+      $.get('/current_id', function(result){
+        let user = $('.td-user')[$('.td-user').length - 1]
+        let userID = user.dataset.id
+        if (parseInt(userID) === result.id){
+          user.innerHTML += `<p><a href="/reviews/${user.dataset.rev}/edit">Edit</a>  | <a rel="nofollow" data-method="delete" href="/reviews/${user.dataset.rev}">Delete</a></p>`
+        }
+      });
+      $('.rev-form').empty()
     })
   })
-  // submitRev()
 }
