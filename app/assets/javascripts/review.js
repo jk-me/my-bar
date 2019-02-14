@@ -7,6 +7,22 @@ class Review {
     this.user_id = obj.user_id
     this.drink_id = obj.drink_id
   }
+  //
+  // trHTML(){
+  //   let cont = this.content.substring(0,27)
+  //   let html = `  <tr>
+  //     <td>${this.rating}/5</td>
+  //     <td id='review-cell-${this.id}'> ${cont}`
+  //     if (cont.length < this.content.length){
+  //       html += `... <a class="full-rev" data-id="${this.id}" href="#">See More</a>`
+  //     }
+  //   html += `
+  //     </td>
+  //     <td class='td-user' data-id='${this.user_id}' data-rev='${this.id}'>${this.user_name}
+  //     </td>
+  //   </tr>`//add links to edit/delete in nextDrink listener in bar.js
+  //   return html
+  // }
 }
 
 Review.prototype.trHTML = function(){

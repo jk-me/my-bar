@@ -6,7 +6,9 @@
   <%= submit_tag 'Filter List' %>
 <% end %>
 
-<div class="col-sm-6">
+<button class='alphabetize'> Alphabetize List </button>
+
+<div class="col-sm-6 drink_list">
   <% @drinks.each do |d| %>
     <p> <%= link_to d.name, drink_path(d)%> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %>
   </p>

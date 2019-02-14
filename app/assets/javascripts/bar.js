@@ -5,7 +5,29 @@ $(function(){
   nextDrink()
   submitRev()
   revForm()
+  alphabetize()
 })
+
+function alphabetize(){
+  $('.alphabetize').on('click', function(e){
+    $.get('/drinks.json', function(data){
+      data.sort(function(a, b){
+        var x = a.name.toLowerCase();
+        var y = b.name.toLowerCase();
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;
+      });
+      let drinkHtml =''
+      for (const drink of data){
+        drinkHtml += `<p> <a href="/drinks/${drink.id}">${drink.name}</a> - <a class="d-disp" data-id="${drink.id}" href="#">Quick View</a>
+        </p>`
+      }
+      $('.drink_list').html(drinkHtml)
+    })
+  })
+  displayDrink()
+}
 
 function fullReview(){
   $('.full-rev').on('click', function(e){
@@ -37,7 +59,8 @@ function displayDrink(){
   $('.d-disp').on('click', function(e){
     e.preventDefault()
     let id = $(this).data('id')
-    $.get('/drinks/'+ id +'.json' , function(data){
+    // let id = this.dataset.id
+    $.get('/drinks/'+ id, function(data){
       let html = `
         <h5>${data.name}</h5>
         <p>Description: ${data.description}</p>
@@ -47,7 +70,7 @@ function displayDrink(){
       }
       // html += `<a href='/drinks/${data.id}'>See More Info </a>`
       $('#drink-display').html(html)
-    })
+    }, 'json')
   })
 }
 
