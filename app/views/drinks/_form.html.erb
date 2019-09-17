@@ -1,7 +1,7 @@
-<%= form_for @drink do |f| %>
+<%= form_for @drink, html: {autocomplete: 'off'} do |f| %>
   <div class="field<%= ' field_with_errors' if @drink.errors[:name].any? %>">
     <p>Name:</p>
-    <%= f.text_field :name %>
+    <%= f.text_field :name  %>
   </div>
 
   <p>Description:</p>

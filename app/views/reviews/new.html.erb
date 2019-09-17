@@ -3,7 +3,11 @@
 
 <%= form_for @review do |f| %>
 
-  <%= render partial:'form', locals: {f: f} %>
+  <%= f.label :rating , "Rating (out of 5)"%>
+  <%= f.select :rating, (1..5).to_a %> <br>
+
+  <%= f.label :content %> <br>
+  <%= f.text_area :content %> <br>
 
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :drink_id, value: @drink.id %>

@@ -23,15 +23,15 @@ $rails s
 
 Then navigate to localhost:3000 in your web browser.
 
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
 ## Author
 
 * **Jenny Kam**
  [jk-me](https://github.com/jk-me)
+<<<<<<< HEAD
  * **Blog:** [my-bar](http://jellyjen.com/rails_project_mybar)
+=======
+* **Blog:** [my-bar/js-rails-proj](http://jellyjen.com/rails_w_javascript_project)
+>>>>>>> js-rails-proj
 
 ## License
 

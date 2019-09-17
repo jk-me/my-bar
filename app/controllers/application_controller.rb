@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
 
   end
 
+  def current_id
+    render json: {id: current_user.id}
+  end
 
   def redirect_if_not_logged_in
    if session[:user_id] == nil

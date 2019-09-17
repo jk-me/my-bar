@@ -1,13 +1,23 @@
 <h2>All Drinks</h2>
 <p><%= link_to "Add a New Drink", new_drink_path %></p>
 
-
 <%= form_tag '/drinks', method:'get' do %>
   <%= select_tag 'filter',options_for_select(['4+ ingredients', '3 or less ingredients']) ,include_blank: true %>
   <%= submit_tag 'Filter List' %>
 <% end %>
 
-<% @drinks.each do |d| %>
-  <p> <%= link_to d.name, drink_path(d) %>
-</p>
-<% end %>
+
+<div class="col-sm-6 drink_list">
+  <% @drinks.each do |d| %>
+    <p> <%= link_to d.name, drink_path(d)%> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %>
+  </p>
+  <% end %>
+  <button class='alphabetize'> Alphabetize List </button>
+
+</div>
+
+<div class="col-sm-6">
+  <div id="drink-display">
+    Displaying drinks here
+  </div>
+</div>

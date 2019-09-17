@@ -23,6 +23,10 @@ class UsersController < ApplicationController
   def show
     redirect_if_wrong_user(params[:id])
     @user = current_user
+    respond_to do |f|
+      f.html {render :show}
+      f.json {render json: @user}
+    end
   end
 
   private
