@@ -21,7 +21,10 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_if_wrong_user(params[:id])
+    # redirect_if_wrong_user(params[:id])
+    if params[:id] != current_user.id.to_s
+      flash[:error]="You may not access another user's data"
+    end
     @user = current_user
     respond_to do |f|
       f.html {render :show}
