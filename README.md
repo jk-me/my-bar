@@ -27,11 +27,8 @@ Then navigate to localhost:3000 in your web browser.
 
 * **Jenny Kam**
  [jk-me](https://github.com/jk-me)
-<<<<<<< HEAD
- * **Blog:** [my-bar](http://jellyjen.com/rails_project_mybar)
-=======
-* **Blog:** [my-bar/js-rails-proj](http://jellyjen.com/rails_w_javascript_project)
->>>>>>> js-rails-proj
+* **Blog:** [my-bar](https://jk-me.github.io/rails_project_mybar)
+* **Blog:** [my-bar/js-rails-proj](https://jk-me.github.io/rails_w_javascript_project)
 
 ## License
 
