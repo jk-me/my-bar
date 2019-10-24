@@ -1,8 +1,8 @@
 <h1>Log In</h1>
 
 <%= form_for @user, url: sessions_path do |f| %>
-  <p>Username: <%= f.text_field :name %></p>
-  <p>Password: <%= f.password_field :password %></p>
+  <p>Username: <%= f.text_field :name, placeholder: "demo: Bob"%></p>
+  <p>Password: <%= f.password_field :password , placeholder: "demo: pw"%></p>
   <%= f.submit "Log In"%>
 <% end %>
 
