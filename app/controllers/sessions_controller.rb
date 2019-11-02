@@ -31,6 +31,11 @@ class SessionsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def logout
+    session.delete(:user_id)
+    redirect_to root_url
+  end
+
   private
 
   def sess_params

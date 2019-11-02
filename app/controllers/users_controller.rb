@@ -15,11 +15,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def logout
-    session.delete(:user_id)
-    redirect_to root_url
-  end
-
   def show
     # redirect_if_wrong_user(params[:id])
     if params[:id] != current_user.id.to_s
