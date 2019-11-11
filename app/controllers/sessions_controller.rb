@@ -1,11 +1,10 @@
 class SessionsController < ApplicationController
 
-  def new #login
+  def new #login form
     @user = User.new
   end
 
   def create #submit login
-    # byebug
     @user = User.find_by(name: sess_params[:name])
     if @user
       if @user.authenticate(sess_params[:password])

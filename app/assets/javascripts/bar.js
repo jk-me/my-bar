@@ -91,8 +91,10 @@ function nextDrink(){
       // route2 = `/drinks/${nextIndex}.json`
     }
     $.get(route1, function(nestData) {
-      if (nest){ route2 = `/${nest}/${nestId}/drinks/${nestData.drinks[nextIndex].id}.json`}
-      else{ route2 = `/drinks/${nestData[nextIndex].id}.json`}
+      if (nest){
+        route2 = `/${nest}/${nestId}/drinks/${nestData.drinks[nextIndex].id}.json`
+      }
+      else{ route2 = `/drinks/${nestData[nextIndex].id}.json` }
       // debugger
       $.get(route2, function(drink){
         if (nest){
