@@ -1,9 +1,11 @@
-<h1>Log In</h1>
+<body class='background-root'>
+  <h1>Log In</h1>
 
-<%= form_for @user, url: sessions_path do |f| %>
-  <p>Username: <%= f.text_field :name, placeholder: "demo: Bob"%></p>
-  <p>Password: <%= f.password_field :password , placeholder: "demo: pw"%></p>
-  <%= f.submit "Log In"%>
-<% end %>
+  <%= form_for @user, url: sessions_path do |f| %>
+    <p>Username: <%= f.text_field :name, placeholder: "demo: Bob"%></p>
+    <p>Password: <%= f.password_field :password , placeholder: "demo: pw"%></p>
+    <%= f.submit "Log In"%>
+  <% end %>
 
-<%= link_to "Login with Facebook", '/auth/facebook'%>
+  <%= link_to "Login with Facebook", '/auth/facebook'%>
+</body>
