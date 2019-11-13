@@ -4,7 +4,7 @@
     <title>MyBar</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -22,17 +22,25 @@
             <span class="icon-bar"></span>
           </button>
 
-        <% if session[:user_id] %>
-          <%= link_to 'Your Profile', user_path(current_user), class:'navbar-brand' %>
-          <%= link_to 'Drink Index', drinks_path, class:'navbar-brand' %>
-          <%= link_to 'Ingredient Index', ingredients_path, class:'navbar-brand' %>
-          <%= link_to 'Log Out', logout_path, class:'navbar-brand'%>
+          <%= link_to 'MyBar', root_path , class:'navbar-brand' %>
+            <% if session[:user_id] %>
+              <%= link_to 'Your Profile', user_path(current_user), class:'navbar-brand' %>
+              <%= link_to 'Drink Index', drinks_path, class:'navbar-brand' %>
+              <%= link_to 'Ingredient Index', ingredients_path, class:'navbar-brand' %>
+              <%= link_to 'Log Out', logout_path, class:'navbar-brand'%>
 
 
-        <% else %>
-          <%= link_to 'Sign Up', new_user_path, class:'navbar-brand' %>
-          <%= link_to 'Log In', new_session_path, {class: 'navbar-brand'} %>
-        <% end %>
+            <% else %>
+            <span class ="navbar-nav mr-auto">
+              <span class="nav-item active">
+                <%= link_to 'Sign Up', new_user_path, class:'nav-link' %>
+
+              </span>
+            </span>
+
+              <%= link_to 'Log In', new_session_path, {class: 'navbar-brand'} %>
+            <% end %>
+
         </div>  <!--nav header -->
 
         <div class="navbar-collapse collapse">
