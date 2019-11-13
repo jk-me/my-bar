@@ -7,6 +7,7 @@ ruby '2.5.1'
 gem 'rails', '~> 5.2.1'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
+# Use postgres
 gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
@@ -29,7 +30,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 
 #boostrap
-gem 'bootstrap-sass', '>= 3.4.1'
+# gem 'bootstrap-sass', '>= 3.4.1'
+gem 'bootstrap', '~> 4.3.1'
 #omniauth
 gem 'omniauth'
 gem 'omniauth-facebook'

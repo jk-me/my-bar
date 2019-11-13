@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-@import "bootstrap-sprockets";
 @import "bootstrap";
 
 html, body{
@@ -22,17 +21,13 @@ html, body{
 body {
   padding-top: 50px;
   padding-bottom: 30px;
-  // background-repeat: no-repeat;
-}
-.container{
-  height: 100%;
 }
 
-.background-root{
-  height: 100%;
+.background-root{ //used on <body>
   background: url('karly-gomez-Fk6ULMTxqj4-unsplash2.jpg');
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .checkbox_container {
