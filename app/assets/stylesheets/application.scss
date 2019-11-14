@@ -23,28 +23,47 @@ body{
   padding: 80px 0px 0px 0px;
 }
 
-.background-root{ //used on <body>
+// .background-root{ //used on <body>
+body{ //used on <body>
+
   background: url('karly-gomez-Fk6ULMTxqj4-unsplash2.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 }
 
-.root-text{
+.root-text, .navbar-brand, .form-header{
   font-family: 'Lobster', Georgia, Times, serif;
+}
+.body-text, .nav-link, .form-label, .btn{
+  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+}
+
+.root-text{
   font-size: 4em;
   color: #2b192b;
 }
 
 .body-text{
-  font-family: 'Cabin', Helvetica, Arial, sans-serif;
   color: #888888;
-  padding: 0px 0px 0px 15px;
+}
+.navbar-brand{
+  font-size: 1.7em;
 }
 
-.nav-link, .navbar-brand{
-  font-family: 'Cabin', Helvetica, Arial, sans-serif;
+.nav-link{
   font-size: 1.3em;
+}
+
+.form-input{
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  height: 30px;
+  padding: 0px 0px 0px 5px;
+}
+
+.submit-btn{
+  border-radius: 20px;
 }
 
 .checkbox_container {

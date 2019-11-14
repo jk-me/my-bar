@@ -1,11 +1,13 @@
 <body class='background-root'>
-  <h1>Log In</h1>
+  <h1 class="form-header">Log In</h1>
 
   <%= form_for @user, url: sessions_path do |f| %>
-    <p class="login-form">Username: <%= f.text_field :name, placeholder: "demo: Bob"%></p>
-    <p class="login-form">Password: <%= f.password_field :password , placeholder: "demo: pw"%></p>
-    <%= f.submit "Log In"%>
+    <p class="form-label">Username: <%= f.text_field :name, placeholder: "demo: Bob", class: "form-input"%></p>
+    <p class="form-label">Password: <%= f.password_field :password , placeholder: "demo: pw", class: "form-input"%></p>
+    <%= f.submit "Log In", class:"btn btn-outline-secondary"%>
   <% end %>
 
-  <%= link_to "Login with Facebook", '/auth/facebook'%>
+  <%= link_to "Login with Facebook", '/auth/facebook', class:"submit-btn"%>
+  <i class="fab fa-facebook-square"></i>
+
 </body>
