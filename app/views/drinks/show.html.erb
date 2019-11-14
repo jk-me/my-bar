@@ -1,3 +1,5 @@
+<div class="bg-color">
+
 <p><%= link_to "Edit", edit_drink_path(@drink), id:'edit-d' %> | <%= link_to "Delete", "/drinks/#{@drink.id}", method: :delete, id:'del-d' %></p>
 
 <% if @user %>
@@ -39,3 +41,4 @@
 </div>
 <br>
 <%= render partial: 'layouts/review_table', locals: {reviews: @drink.reviews, index: false} %>
+</div>
