@@ -23,10 +23,10 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
           <% if session[:user_id] %>
-            <li class="nav-item active">
+            <li class="nav-item">
               <%= link_to 'Your Profile', user_path(current_user), class:'nav-link' %>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
               <%= link_to 'Drink Index', drinks_path, class:'nav-link' %>
             </li>
             <li class="nav-item">
