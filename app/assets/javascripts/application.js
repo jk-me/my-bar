@@ -17,3 +17,11 @@
 //= require activestorage
 //= require bar
 //= require review
+console.log('hi')
+$(".nav-item").removeClass('active');
+
+
+$('.nav-item').click(function(){
+    // $('.navbar-nav .nav-item').removeClass('active');
+    $(this).addClass('active');
+})
