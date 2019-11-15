@@ -1,31 +1,30 @@
 <%= form_for @drink, html: {autocomplete: 'off'} do |f| %>
   <div class="field<%= ' field_with_errors' if @drink.errors[:name].any? %>">
-    <p>Name:</p>
-    <%= f.text_field :name  %>
+    <div>Name:</div>
+    <%= f.text_field :name  , class:"form-input"%>
   </div>
+  <br>
+  <div>Description:</div>
+  <%= f.text_area  :description , class:"form-input"%>
 
-  <p>Description:</p>
-  <%= f.text_area  :description%>
-
-  <p>Ingredients:</p>
+  <div>Ingredients:</div>
   <% Ingredient.all.each do |ing| %>
     <div>
     <%= hidden_field_tag 'ingredients[][id]', ing.id %>
-    <%= number_field_tag 'ingredients[][parts]', ing.find_join_record(@drink).nil? ? nil : ing.find_join_record(@drink).parts %>
+    <%= number_field_tag 'ingredients[][parts]', ing.find_join_record(@drink).nil? ? nil : ing.find_join_record(@drink).parts , class:"form-input"%>
     <%= "part(s) #{ing.name}" %>
     </div>
   <% end %>
-
-  <p>New Ingredient:</p>
-  <%= f.fields_for :drinks_ingredients, @drink.drinks_ingredients.build do |di_field| %>
-    <% if @drink.id %>
-      <%= di_field.hidden_field :drink_id, value: @drink.id %>
+  <br>
+  <div>New Ingredient:</div>
+    <%= f.fields_for :drinks_ingredients, @drink.drinks_ingredients.build do |di_field| %>
+      <% if @drink.id %>
+        <%= di_field.hidden_field :drink_id, value: @drink.id %>
+      <% end %>
+      <%= di_field.number_field :parts, placeholder: "no. parts", class:"form-input" %>
+      <%= di_field.text_field :ingredient_name, placeholder: "Ingredient Name" , class:"form-input"%>
     <% end %>
-    <%= di_field.number_field :parts, placeholder: "no. parts" %>
-    <%= di_field.text_field :ingredient_name, placeholder: "Ingredient Name" %>
-  <% end %>
-
   <p><%= check_box_tag :'drink[user_ids][]', current_user.id, @drink.users.include?(current_user) ? true : false %> Include in your favorites</p>
 
-  <%= f.submit %>
+  <%= f.submit "Create Drink" , class:"btn btn-secondary"%>
 <% end %>

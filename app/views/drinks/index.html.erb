@@ -5,7 +5,7 @@
 
   <%= form_tag '/drinks', method:'get' do %>
     <%= select_tag 'filter',options_for_select(['4+ ingredients', '3 or less ingredients']) ,include_blank: true %>
-    <%= submit_tag 'Filter List' %>
+    <%= submit_tag 'Filter List', class:"btn btn-sm btn-outline-secondary" %>
   <% end %>
 
   <div class="row">
@@ -14,7 +14,7 @@
         <p> <%= link_to d.name, drink_path(d)%> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %>
       </p>
       <% end %>
-      <button class='alphabetize'> Alphabetize List </button>
+      <button class='alphabetize btn btn-outline-secondary'> Alphabetize List </button>
 
     </div>
 

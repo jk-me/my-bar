@@ -4,7 +4,7 @@
 
 <%= form_for @review do |f| %>
   <%= render partial:'form', locals: {f: f} %>
-  <%= f.submit %>
+  <%= f.submit "Update Review", class:"btn btn-secondary"%>
 <% end %>
 
 </div>

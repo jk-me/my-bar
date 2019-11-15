@@ -73,6 +73,12 @@ body{ //used on <body>
   padding: 20px 20px 10px 20px;
 }
 
+textarea{
+  min-height: 100px;
+  width: 300px;
+  resize: both;
+}
+
 .checkbox_container {
   display: block;
   vertical-align: -1px;
