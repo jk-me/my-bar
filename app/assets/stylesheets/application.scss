@@ -70,7 +70,7 @@ body{ //used on <body>
 .bg-color{
   height: 100%;
   background-color:rgba(220, 221, 222, 0.8);
-  padding: 20px 10px 10px 20px;
+  padding: 20px 20px 10px 20px;
 }
 
 .checkbox_container {
@@ -86,10 +86,12 @@ th, td {
 }
 
 th{
-  background-color: #99ccff;
+  background-color: rgba(#85aed7, 0.83);
 }
 tr:nth-child(even) {
-  background-color: #f2f2f2;}
+  background-color: rgba(#f6f0f0, 0.9);}
+tr:nth-child(odd) {
+  background-color: rgba(#d9deeb, 0.9);}
 
 .field_with_errors {
   padding: 2px;

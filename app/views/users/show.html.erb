@@ -3,17 +3,19 @@
   <p><%= link_to "Add a New Drink", new_drink_path %> | <%= link_to "See reviews you've written.", user_reviews_path(current_user) %></p>
 
   <h3>Your favorites:</h3>
+  <div class="row">
+    <div class="col-6">
+      <% @user.drinks.each do |d| %>
+        <p><%= link_to d.name, user_drink_path(@user, d)%> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %></p>
+      <% end %>
+    </div>
 
-  <div class="col-sm-6">
-    <% @user.drinks.each do |d| %>
-      <p><%= link_to d.name, user_drink_path(@user, d)%> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %></p>
-    <% end %>
-  </div>
-
-  <div class="col-sm-6">
-    <div id="drink-display">
-      Displaying drinks here
+    <div class="col-6">
+      <div id="drink-display">
+        
+      </div>
     </div>
   </div>
+
 
 </div>
