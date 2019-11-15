@@ -1,22 +1,24 @@
 <div class="bg-color">
 
-<h1><%= @ingredient.name %></h1>
-<h4><%= @ingredient.description %></h4>
-<p><%= link_to "Edit Ingredient", edit_ingredient_path(@ingredient) %></p>
-<br>
+  <h1><%= @ingredient.name %></h1>
+  <h4><%= @ingredient.description %></h4>
+  <p><%= link_to "Edit Ingredient", edit_ingredient_path(@ingredient) %></p>
+  <br>
 
-<p>Drinks with <%= @ingredient.name %>: </p>
+  <p>Drinks with <%= @ingredient.name %>: </p>
 
-<div class="col-sm-6">
-  <% @ingredient.drinks.each do |d|%>
-    <p><%= link_to d.name, ingredient_drink_path(@ingredient, d) %> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %></p>
-  <% end %>
-</div>
+  <div class="row">
+    <div class="col-6">
+      <% @ingredient.drinks.each do |d|%>
+        <p><%= link_to d.name, ingredient_drink_path(@ingredient, d) %> - <%= link_to "Quick View", '#', class:'d-disp', data: {id: "#{d.id}"}  %></p>
+      <% end %>
+    </div>
 
-<div class="col-sm-6">
-  <div id="drink-display">
-    Displaying drinks here
+    <div class="col-6">
+      <div id="drink-display">
+      </div>
+    </div>
   </div>
-</div>
+
 
 </div>
