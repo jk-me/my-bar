@@ -14,6 +14,7 @@
  *= require_self
  */
 @import "bootstrap";
+//= depend_on_asset "karly-gomez-Fk6ULMTxqj4-unsplash2.jpg"
 
 html, body{
   height: 100%;
@@ -25,8 +26,7 @@ body{
 
 // .background-root{ //used on <body>
 body{ //used on <body>
-
-  background: url('karly-gomez-Fk6ULMTxqj4-unsplash2.jpg');
+  background: url('<%= asset_path("karly-gomez-Fk6ULMTxqj4-unsplash2.jpg") %>');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -64,6 +64,8 @@ body{ //used on <body>
   border-radius: 20px;
 }
 .container{
+  // height: auto;
+
   height: 100%;
 }
 
