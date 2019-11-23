@@ -8,7 +8,7 @@ class Review {
     this.drink_id = obj.drink_id
   }
   //
-  // trHTML(){
+  // trHTML(){     //same result as prototype method
   //   let cont = this.content.substring(0,27)
   //   let html = `  <tr>
   //     <td>${this.rating}/5</td>

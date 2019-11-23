@@ -29,7 +29,6 @@ class ReviewsController < ApplicationController
   def create  #js form POSTs here
     if review_params[:user_id] == current_user.id.to_s
       @review = Review.create(review_params)
-      # redirect_to drink_path(@review.drink)
       render json: @review, status:201
     else
       flash[:error] = 'Do not attempt to create reviews for other users.'

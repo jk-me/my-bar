@@ -163,19 +163,14 @@ function submitRev(){
            url: '/reviews',
            data: $(this).serialize(), // serializes the form's elements.
            dataType: 'json'
-    }).success(function(data) {
-      $.get('/current_id', function(result){
-        if (parseInt(data.user_id) === result.id){
-          let n = new Review(data)
-          let revHTML = n.trHTML()
-          $('tbody').append(revHTML)
-          let user = $('.td-user')[$('.td-user').length - 1]
-          let userID = user.dataset.id
-          user.innerHTML += `<p><a href="/reviews/${user.dataset.rev}/edit">Edit</a>  | <a rel="nofollow" data-method="delete" href="/reviews/${user.dataset.rev}">Delete</a></p>`
-        }
-        else {return}
-      });
-      $('.rev-form').empty()
+    }).done(function(data) {   //post done, handle returned json of new review
+        let n = new Review(data)
+        let revHTML = n.trHTML()
+        $('tbody').append(revHTML)   //append new row to table
+        let user = $('.td-user')[$('.td-user').length - 1] //select from newly added rows
+        let userID = user.dataset.id
+        user.innerHTML += `<p><a href="/reviews/${user.dataset.rev}/edit">Edit</a>  | <a rel="nofollow" data-method="delete" href="/reviews/${user.dataset.rev}">Delete</a></p>`
+        $('.rev-form').empty()
     })
   })
 }
