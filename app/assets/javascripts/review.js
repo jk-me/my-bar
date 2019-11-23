@@ -53,12 +53,12 @@ Review.prototype.formHTML = function(){
     <option value="5">5</option></select> <br>
 
       <label for="review_content">Content</label> <br>
-      <textarea name="review[content]" id="review_content"></textarea> <br>
+      <textarea name="review[content]" id="review_content" class="form-input"></textarea> <br>
 
       <input value="${this.user_id}" type="hidden" name="review[user_id]" id="review_user_id">
       <input value="${this.drink_id}" type="hidden" name="review[drink_id]" id="review_drink_id">
 
-      <input type="submit" name="commit" value="Create Review" data-disable-with="Create Review""">
+      <input type="submit" name="commit" class="btn btn-secondary" value="Create Review" data-disable-with="Create Review""">
     </form>
     `
   return html

@@ -26,10 +26,10 @@ class ReviewsController < ApplicationController
   end
 
 
-  def create
+  def create  #js form POSTs here
     if review_params[:user_id] == current_user.id.to_s
       @review = Review.create(review_params)
-      redirect_to drink_path(@review.drink)
+      # redirect_to drink_path(@review.drink)
       render json: @review, status:201
     else
       flash[:error] = 'Do not attempt to create reviews for other users.'
@@ -58,12 +58,13 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find_by_id(params[:id])
+    drink = @review.drink
     if @review.user != current_user
       flash[:error] = 'You may only delete your own reviews.'
       redirect_to user_path(current_user)
     else
       @review.destroy
-      redirect_to user_reviews_path(current_user.id)
+      redirect_to drink_path(drink.id)
     end
   end
 
